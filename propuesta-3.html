@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chacón Farfán Directo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,700;62..125,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Propuesta 3 · Moderno y directo: pensado para el celular, el número de WhatsApp es el titular; tipografía ancha, cobalto sobre blanco */
+:root{
+  --bg:#ffffff; --soft:#f1f4fb; --ink:#0f1624; --muted:#566077; --line:#dfe4ef;
+  --cobalt:#1d4ed8; --on-cobalt:#ffffff; --wa:#128c4b;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c111c; --soft:#141b2b; --ink:#eef2fa; --muted:#9aa6bf; --line:#253049;
+  --cobalt:#7aa2ff; --on-cobalt:#0b1330; --wa:#3ccf7f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c111c; --soft:#141b2b; --ink:#eef2fa; --muted:#9aa6bf; --line:#253049;
+  --cobalt:#7aa2ff; --on-cobalt:#0b1330; --wa:#3ccf7f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.6;margin:0;padding-bottom:4.5rem}
+.wrap{max-width:68rem;margin:0 auto;padding-inline:1.25rem}
+a{color:var(--cobalt)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);line-height:1;text-wrap:balance;margin:0;font-weight:800}
+.label{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cobalt);margin:0}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.1rem;flex-wrap:wrap}
+.brand{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.1rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--cobalt)}
+header.top a.call{font-weight:600;text-decoration:none;font-variant-numeric:tabular-nums}
+.hero .wrap{padding-block:2.5rem 3rem;display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:stretch}
+.hero h1{font-stretch:62%;font-size:clamp(3rem,9vw,6.2rem);letter-spacing:-.01em;text-transform:uppercase;margin-block:.7rem 1.2rem}
+.hero p{color:var(--muted);max-width:32rem;margin:0}
+.phone{margin-top:1.8rem;padding:1.2rem 1.3rem;background:var(--soft);border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.phone .num{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(1.6rem,4.5vw,2.4rem);font-variant-numeric:tabular-nums;color:var(--ink);text-decoration:none}
+.phone small{display:block;color:var(--muted);font-size:.85rem}
+.btn{display:inline-block;padding:.85rem 1.3rem;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.blue{background:var(--cobalt);color:var(--on-cobalt)}
+.btn.ghost{border:1.5px solid var(--line);color:var(--ink)}
+.ph{margin:0;border-radius:10px;min-height:20rem;max-width:100%;display:flex;align-items:flex-end;padding:1rem;
+  background:linear-gradient(180deg,#9fb7e8 0%,#c9d6f2 45%,#8a6f55 46%,#b89a78 70%,#6c5640 100%)}
+.ph figcaption{background:rgba(9,14,28,.78);color:#e8edf8;font-size:.8rem;line-height:1.45;padding:.8rem .9rem;border-radius:6px}
+.ph figcaption strong{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#9fb8ff}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+section.s .wrap{padding-block:3.5rem}
+section.s h2{font-stretch:75%;font-size:clamp(2rem,5vw,3rem);text-transform:uppercase;margin-block:.5rem 1.5rem}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;border-top:2px solid var(--ink);padding-top:1.5rem}
+.svc h3{font-stretch:100%;font-size:1.8rem}
+.svc p{color:var(--muted);margin:0}
+.case{background:var(--soft);border-radius:10px;padding:1.4rem;min-width:0;display:flex;flex-direction:column;gap:.8rem}
+.case .tag{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cobalt)}
+.case h3{font-stretch:88%;font-size:1.45rem;font-weight:700;line-height:1.15}
+.where{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.where > div{background:var(--soft);border-radius:10px;padding:1.5rem;min-width:0}
+address{font-style:normal;font-size:1.15rem;line-height:1.7;margin-bottom:1.2rem}
+.line{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;padding-block:.8rem;border-bottom:1px solid var(--line)}
+.line:last-child{border-bottom:0}
+.line small{display:block;color:var(--muted);font-size:.8rem}
+.line .v{word-break:break-word;min-width:0;font-weight:600;font-variant-numeric:tabular-nums}
+.line .v a{color:var(--ink);text-decoration:none}
+.copy{background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:.35rem .75rem;font:inherit;font-size:.85rem;cursor:pointer}
+footer .wrap{padding-block:1.5rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));display:flex;gap:.6rem;justify-content:center;z-index:5}
+.dock .btn{flex:1;max-width:16rem;text-align:center;padding:.7rem 1rem}
+@media (max-width:820px){
+  .hero .wrap,.svc,.where,.grid3{grid-template-columns:1fr}
+  .ph{min-height:14rem}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#inicio">ASESORES LEGALES <span>JC</span></a>
+  <a class="call" href="tel:+51984208032">984 208 032</a>
+</div></header>
+
+<main id="inicio">
+<section class="hero"><div class="wrap">
+  <div>
+    <p class="label">Abogado · Wanchaq, Cusco</p>
+    <h1>Juan Carlos Chacón Farfán</h1>
+    <p>Asesoría legal general para personas naturales y jurídicas, municipalidades y comunidades campesinas. Escríbanos y coordinamos su consulta.</p>
+    <div class="phone">
+      <div><small>Celular y WhatsApp</small><a class="num" href="tel:+51984208032">984 208 032</a></div>
+      <a class="btn wa" href="https://wa.me/51984208032" target="_blank" rel="noopener">Abrir WhatsApp</a>
+    </div>
+  </div>
+  <figure class="ph" aria-label="Espacio para imagen de portada">
+    <figcaption><strong>Imagen Higgsfield · Portada</strong>Vista de Cusco desde lo alto, techos de teja y cerros verdes, cielo azul intenso, estilo fotográfico limpio y contemporáneo, formato 4:5.</figcaption>
+  </figure>
+</div></section>
+
+<section class="s" id="servicios"><div class="wrap">
+  <p class="label">Servicios</p>
+  <div class="svc">
+    <h3>Asesoría legal general</h3>
+    <p>Consultas, revisión de documentos y acompañamiento en trámites. Usted habla directamente con el abogado.</p>
+  </div>
+</div></section>
+
+<section class="s" id="casos"><div class="wrap">
+  <p class="label">Experiencia</p>
+  <h2>Casos de éxito</h2>
+  <div class="grid3">
+    <article class="case"><span class="tag">Comunidades</span><h3>Asesoría legal a comunidades campesinas</h3></article>
+    <article class="case"><span class="tag">Sector público</span><h3>Asesoría a municipalidades</h3></article>
+    <article class="case"><span class="tag">Personas y empresas</span><h3>Asesoría a personas naturales y jurídicas</h3></article>
+  </div>
+</div></section>
+
+<section class="s" id="oficina"><div class="wrap">
+  <p class="label">Oficina y contacto</p>
+  <h2>Dónde encontrarnos</h2>
+  <div class="where">
+    <div>
+      <address>Ofic. 209, 2.º piso<br>Inmueble N.º 1115-C<br>Av. Tomasa Tito Condemayta, Wanchaq, Cusco</address>
+      <a class="btn blue" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Tomasa+Tito+Condemayta+1115-C,+Wanchaq,+Cusco" target="_blank" rel="noopener">Ver en el mapa</a>
+    </div>
+    <div id="contacto">
+      <div class="line"><div class="v"><small>Celular / WhatsApp</small><a href="tel:+51984208032">984 208 032</a></div><button class="copy" id="c1" type="button" data-copy="984208032">Copiar</button></div>
+      <div class="line"><div class="v"><small>Correo</small><a href="mailto:asesoreslegalesjc@hotmail.com">asesoreslegalesjc@hotmail.com</a></div><button class="copy" id="c2" type="button" data-copy="asesoreslegalesjc@hotmail.com">Copiar</button></div>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Asesores Legales JC · Juan Carlos Chacón Farfán</span><span>Wanchaq, Cusco</span></div></footer>
+<nav class="dock" aria-label="Contacto rápido"><a class="btn wa" href="https://wa.me/51984208032" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" href="tel:+51984208032">Llamar</a></nav>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),label=b.textContent;
+    function done(){b.textContent='Copiado';setTimeout(function(){b.textContent=label},1600)}
+    function sel(){var v=b.parentNode.querySelector('a');if(!v)return;var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+});
+</script>
+</body>
+</html>

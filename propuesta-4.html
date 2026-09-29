@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chacón Farfán Plano</title>
+<meta name="description" content="Juan Carlos Chacón Farfán, abogado en Wanchaq, Cusco. Asesoría legal a personas naturales y jurídicas, municipalidades y comunidades campesinas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#eceee4; --sheet:#f6f7f1; --ink:#1b231e; --muted:#4c5850; --rule:#aab3a2;
+  --contour:#7d9868; --contour-soft:#b8c6a8; --hatch:#c9d2b9;
+  --lindero:#c42b22; --on-lindero:#ffffff;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Martian Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#101612; --sheet:#161e19; --ink:#e3e9df; --muted:#a2afa5; --rule:#39453d;
+  --contour:#5d7a4c; --contour-soft:#2f3f2b; --hatch:#2c3a2b;
+  --lindero:#ff6457; --on-lindero:#1a0503; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#101612; --sheet:#161e19; --ink:#e3e9df; --muted:#a2afa5; --rule:#39453d;
+  --contour:#5d7a4c; --contour-soft:#2f3f2b; --hatch:#2c3a2b;
+  --lindero:#ff6457; --on-lindero:#1a0503; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.075rem;line-height:1.6;padding-bottom:4.75rem}
+::selection{background:var(--lindero);color:var(--on-lindero)}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--lindero);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:.95;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.coord{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Lámina: marco de plano con coordenadas en el borde */
+.lamina{max-width:78rem;margin:0 auto;padding:1rem}
+.frame{position:relative;border:1.5px solid var(--ink);background:var(--sheet)}
+.ticks{display:flex;justify-content:space-between;padding:.3rem .8rem;border-bottom:1px solid var(--rule)}
+.ticks.bottom{border-bottom:0;border-top:1px solid var(--rule)}
+
+header.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:.9rem 1.25rem;border-bottom:1.5px solid var(--ink)}
+.brand{display:flex;align-items:baseline;gap:.6rem;text-decoration:none}
+.brand b{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+.brand span{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+header.top nav{display:flex;gap:1.25rem;flex-wrap:wrap;font-family:var(--display);font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+header.top nav a{text-decoration:none}
+header.top nav a:hover{color:var(--lindero)}
+
+/* Plano principal */
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);min-height:min(82vh,46rem);border-bottom:1.5px solid var(--ink)}
+.hero-text{position:relative;z-index:2;padding:clamp(1.5rem,4vw,3.5rem) 1.5rem clamp(1.5rem,4vw,3rem) clamp(1.25rem,4vw,3rem);display:flex;flex-direction:column;justify-content:space-between;gap:2rem;border-right:1px solid var(--rule)}
+.hero h1{font-size:clamp(3.4rem,8.4vw,6rem);text-transform:uppercase}
+.hero h1 span{display:block;color:var(--muted);font-weight:500;font-size:.42em;letter-spacing:.06em;margin-top:.9rem}
+.hero p.intro{max-width:30rem;margin:1.4rem 0 0;color:var(--muted)}
+.map{position:relative;overflow:hidden;min-height:22rem;background:var(--sheet)}
+.map svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.map .orto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;mix-blend-mode:multiply;filter:grayscale(1) contrast(1.1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .map .orto{mix-blend-mode:screen;opacity:.18}}
+:root[data-theme="dark"] .map .orto{mix-blend-mode:screen;opacity:.18}
+.contour{fill:none;stroke:var(--contour);stroke-width:.8;vector-effect:non-scaling-stroke}
+.contour.index{stroke-width:1.6}
+.elev{font-family:var(--mono);font-size:10px;fill:var(--contour)}
+.parcel{fill:var(--hatch);fill-opacity:.55}
+.lindero-line{fill:none;stroke:var(--lindero);stroke-width:2.4;stroke-dasharray:14 5 3 5;vector-effect:non-scaling-stroke}
+.hito circle{fill:var(--sheet);stroke:var(--lindero);stroke-width:2.2;vector-effect:non-scaling-stroke}
+.hito circle.dot{fill:var(--lindero);stroke:none}
+.hito text{font-family:var(--display);font-weight:700;font-size:21px;text-transform:uppercase;letter-spacing:.04em;fill:var(--ink);paint-order:stroke;stroke:var(--sheet);stroke-width:5px;stroke-linejoin:round}
+.hito text.code{font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:0;fill:var(--lindero);text-transform:none}
+.hito:hover text:not(.code),.hito:focus-visible text:not(.code){fill:var(--lindero)}
+.hito:focus-visible{outline:none}
+.hito:focus-visible circle:not(.dot){stroke-width:4}
+.north{font-family:var(--display);font-weight:700;font-size:16px;fill:var(--ink)}
+.north path{fill:var(--ink)}
+
+/* Nota de imagen Higgsfield */
+.slotnote{position:absolute;left:.75rem;bottom:.75rem;z-index:3;max-width:21rem;background:var(--sheet);border:1px solid var(--ink);padding:.55rem .7rem;font-size:.78rem;line-height:1.45;color:var(--muted)}
+.slotnote strong{display:block;font-family:var(--mono);font-weight:500;font-size:.72rem;color:var(--lindero);margin-bottom:.15rem}
+.has-img .slotnote{display:none}
+
+/* Rótulo: el cuadro de datos del plano es la ficha de contacto */
+.rotulo{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink);background:var(--sheet);font-size:.95rem}
+.rotulo > div{padding:.55rem .75rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);min-width:0}
+.rotulo > div:nth-child(2n){border-right:0}
+.rotulo .full{grid-column:1/-1;border-right:0}
+.rotulo .last{border-bottom:0}
+.rotulo small{display:block;font-family:var(--mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.rotulo .v{font-weight:600;word-break:break-word;font-variant-numeric:tabular-nums}
+.rotulo .v a{text-decoration:none}
+.rotulo .v a:hover{color:var(--lindero)}
+.act{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:.65rem 1.1rem;border:1.5px solid var(--ink);transition:background-color .2s,color .2s}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn.primary{background:var(--lindero);border-color:var(--lindero);color:var(--on-lindero)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.btn.plain:hover{background:var(--ink);color:var(--sheet)}
+.copy{font-family:var(--mono);font-size:.72rem;background:transparent;border:1px solid var(--rule);color:var(--ink);padding:.2rem .45rem;cursor:pointer;margin-left:.4rem;vertical-align:middle}
+.copy:hover{border-color:var(--ink)}
+
+/* Secciones como bloques de lámina */
+.block{display:grid;grid-template-columns:15rem minmax(0,1fr);border-bottom:1.5px solid var(--ink)}
+.block > .side{padding:1.75rem 1.25rem;border-right:1px solid var(--rule)}
+.block > .side h2{font-size:clamp(2.2rem,4vw,3rem);text-transform:uppercase}
+.block > .side .coord{display:block;margin-top:.6rem}
+.block > .main{padding:1.75rem clamp(1.25rem,3vw,2.5rem) 2.25rem;min-width:0}
+.lead{font-size:clamp(1.35rem,2.4vw,1.75rem);line-height:1.3;max-width:40rem;margin:0 0 .8rem;font-weight:500}
+.muted{color:var(--muted);max-width:40rem;margin:0}
+
+/* Leyenda: los tres ámbitos de experiencia */
+.legend{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.legend li{display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;gap:1.25rem;align-items:center;padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.sw{height:3.2rem;border:1.5px solid var(--ink);background:var(--sheet)}
+.sw.a{background:repeating-linear-gradient(45deg,var(--contour) 0 1.5px,transparent 1.5px 8px)}
+.sw.b{background:radial-gradient(circle,var(--contour) 1.4px,transparent 1.8px) 0 0/9px 9px}
+.sw.c{background:var(--hatch)}
+.legend h3{font-size:clamp(1.5rem,3vw,2.1rem);text-transform:uppercase}
+.legend .coord{white-space:nowrap}
+.legend-note{margin:.9rem 0 0;font-size:.85rem;color:var(--muted)}
+
+/* Ubicación */
+.site{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:start}
+address{font-style:normal;font-size:1.2rem;line-height:1.55;margin:0 0 1.2rem}
+address strong{font-family:var(--display);font-size:1.7rem;text-transform:uppercase;display:block;line-height:1;margin-bottom:.4rem}
+.photo{position:relative;margin:0;aspect-ratio:3/2;border:1.5px solid var(--ink);overflow:hidden;
+  background:radial-gradient(circle,var(--contour-soft) 1px,transparent 1.4px) 0 0/12px 12px,var(--sheet)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .slotnote{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;max-width:none}
+
+footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.9rem 1.25rem;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+
+/* Barra de contacto fija (una sola tinta de acción) */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:.5rem;justify-content:center;padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom,0px));background:var(--sheet);border-top:1.5px solid var(--ink)}
+.dock .btn{flex:1;max-width:17rem;justify-content:center;font-size:1.1rem;padding:.55rem .8rem}
+
+/* Trazo del lindero al cargar */
+@media (prefers-reduced-motion:no-preference){
+  .lindero-line.draw{stroke-dasharray:1 0;animation:draw 1.8s cubic-bezier(.16,1,.3,1) .2s both}
+  .hito{animation:pin .5s cubic-bezier(.16,1,.3,1) both}
+  @keyframes draw{from{stroke-dashoffset:1;stroke-dasharray:1 1}to{stroke-dashoffset:0;stroke-dasharray:1 1}}
+  @keyframes pin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-text{border-right:0;border-top:1px solid var(--rule);order:2}
+  .map{order:1;min-height:0;aspect-ratio:1/1}
+  .map .slotnote{font-size:.74rem;top:.6rem;bottom:auto;left:.6rem;max-width:14rem}
+  .map .slotnote .desc{display:none}
+  .hito text{font-size:34px}
+  .hito text.code{font-size:18px}
+  .elev{display:none}
+  .block{grid-template-columns:1fr}
+  .block > .side{border-right:0;border-bottom:1px solid var(--rule);padding-bottom:1rem}
+  .site{grid-template-columns:1fr}
+  .legend li{grid-template-columns:4rem minmax(0,1fr)}
+  .legend li .coord{grid-column:2}
+  .ticks span:nth-child(n+3){display:none}
+}
+@media (max-width:480px){
+  .lamina{padding:.5rem}
+  .rotulo{grid-template-columns:1fr}
+  .rotulo > div{border-right:0}
+  header.top nav{display:none}
+}
+</style>
+</head>
+<body>
+<div class="lamina">
+<div class="frame">
+  <div class="ticks" aria-hidden="true"><span class="coord">E 178 500</span><span class="coord">E 179 000</span><span class="coord">E 179 500</span><span class="coord">E 180 000</span></div>
+
+  <header class="top">
+    <a class="brand" href="#inicio"><b>Asesores Legales JC</b><span>Wanchaq · Cusco</span></a>
+    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#experiencia">Experiencia</a><a href="#oficina">Oficina</a><a href="#contacto">Contacto</a></nav>
+  </header>
+
+  <main id="inicio">
+  <section class="hero" aria-labelledby="t-hero">
+    <div class="hero-text">
+      <div>
+        <h1 id="t-hero">Juan Carlos Chacón Farfán<span>Abogado en Cusco</span></h1>
+        <p class="intro">Asesoría legal a personas naturales y jurídicas, municipalidades y comunidades campesinas. Cada consulta la atiende el abogado, en persona.</p>
+      </div>
+      <div class="rotulo" id="contacto" aria-label="Datos de contacto">
+        <div class="full"><small>Profesional responsable</small><span class="v">Abog. Juan Carlos Chacón Farfán</span></div>
+        <div><small>Celular / WhatsApp</small><span class="v"><a href="tel:+51984208032">984 208 032</a><button class="copy" type="button" data-copy="984208032">Copiar</button></span></div>
+        <div><small>Sede</small><span class="v">Wanchaq, Cusco</span></div>
+        <div class="full"><small>Correo</small><span class="v"><a href="mailto:asesoreslegalesjc@hotmail.com">asesoreslegalesjc@hotmail.com</a><button class="copy" type="button" data-copy="asesoreslegalesjc@hotmail.com">Copiar</button></span></div>
+        <div class="full last act">
+          <a class="btn primary" href="https://wa.me/51984208032" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3a2.8 2.8 0 0 0-.9 2.1c0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escribir por WhatsApp</a>
+          <a class="btn plain" href="tel:+51984208032">Llamar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="map" id="mapa">
+      <img class="orto" src="img/p4-ortofoto-wanchaq.jpg" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+      <svg id="plano" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="plano-t">
+        <title id="plano-t">Plano ilustrativo del valle de Cusco con los cuatro apartados de la página marcados como hitos de un lindero</title>
+        <g id="contours"></g>
+        <polygon class="parcel" points="300,270 610,220 700,520 360,590"/>
+        <polygon class="lindero-line draw" pathLength="1" points="300,270 610,220 700,520 360,590"/>
+        <a class="hito" href="#servicios" style="animation-delay:.9s"><circle cx="300" cy="270" r="11"/><circle class="dot" cx="300" cy="270" r="4"/><text x="318" y="258">Servicios</text><text class="code" x="318" y="276">H-1</text></a>
+        <a class="hito" href="#experiencia" style="animation-delay:1.1s"><circle cx="610" cy="220" r="11"/><circle class="dot" cx="610" cy="220" r="4"/><text x="628" y="208">Experiencia</text><text class="code" x="628" y="226">H-2</text></a>
+        <a class="hito" href="#oficina" style="animation-delay:1.3s"><circle cx="700" cy="520" r="11"/><circle class="dot" cx="700" cy="520" r="4"/><text x="620" y="562">Oficina</text><text class="code" x="620" y="580">H-3</text></a>
+        <a class="hito" href="#contacto" style="animation-delay:1.5s"><circle cx="360" cy="590" r="11"/><circle class="dot" cx="360" cy="590" r="4"/><text x="378" y="626">Contacto</text><text class="code" x="378" y="644">H-4</text></a>
+        <g class="north" transform="translate(920 90)" aria-hidden="true"><path d="M0-34 10 10 0 3-10 10Z"/><text x="0" y="32" text-anchor="middle">N</text></g>
+      </svg>
+      <p class="slotnote"><strong>Imagen Higgsfield · img/p4-ortofoto-wanchaq.jpg · 16:10</strong><span class="desc">Ortofoto aérea cenital de Wanchaq, Cusco, al mediodía: tejados de calamina y teja, avenidas arboladas, cerros al fondo, colores naturales, nitidez de fotogrametría, sin texto.</span></p>
+    </div>
+  </section>
+
+  <section class="block" id="servicios" aria-labelledby="t-serv">
+    <div class="side"><h2 id="t-serv">Servicios</h2><span class="coord">H-1</span></div>
+    <div class="main">
+      <p class="lead">Asesoría legal general, con el abogado a cargo de principio a fin.</p>
+      <p class="muted">Revisión de documentos, consultas y acompañamiento en trámites para personas, empresas e instituciones de Cusco.</p>
+    </div>
+  </section>
+
+  <section class="block" id="experiencia" aria-labelledby="t-exp">
+    <div class="side"><h2 id="t-exp">Experiencia</h2><span class="coord">H-2 · Leyenda</span></div>
+    <div class="main">
+      <p class="lead">Casos de éxito en tres ámbitos.</p>
+      <ul class="legend">
+        <li><span class="sw a" aria-hidden="true"></span><h3>Comunidades campesinas</h3><span class="coord">Asesoría legal</span></li>
+        <li><span class="sw b" aria-hidden="true"></span><h3>Municipalidades</h3><span class="coord">Asesoría legal</span></li>
+        <li><span class="sw c" aria-hidden="true"></span><h3>Personas naturales y jurídicas</h3><span class="coord">Asesoría legal</span></li>
+      </ul>
+      <p class="legend-note">El plano de la portada es ilustrativo; las coordenadas del marco son referenciales.</p>
+    </div>
+  </section>
+
+  <section class="block" id="oficina" aria-labelledby="t-ofi">
+    <div class="side"><h2 id="t-ofi">Oficina</h2><span class="coord">H-3 · 13°31′ S · 71°58′ O (aprox.)</span></div>
+    <div class="main site">
+      <div>
+        <address><strong>Ofic. 209, 2.º piso</strong>Inmueble N.º 1115-C<br>Av. Tomasa Tito Condemayta<br>Wanchaq, Cusco, Perú</address>
+        <a class="btn plain" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Tomasa+Tito+Condemayta+1115-C,+Wanchaq,+Cusco" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <figure class="photo">
+        <img src="img/p4-oficina.jpg" alt="Oficina de Asesores Legales JC en Wanchaq" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+        <figcaption class="slotnote"><strong>Imagen Higgsfield · img/p4-oficina.jpg · 3:2</strong>Despacho jurídico sobrio en un segundo piso de Cusco: escritorio de madera con un plano catastral enrollado y códigos legales, ventana a los cerros del valle, luz natural de mañana, fotografía documental, sin personas.</figcaption>
+      </figure>
+    </div>
+  </section>
+  </main>
+
+  <footer><span>Asesores Legales JC · Lámina única</span><span>Juan Carlos Chacón Farfán · Wanchaq, Cusco</span></footer>
+  <div class="ticks bottom" aria-hidden="true"><span class="coord">N 8 502 000</span><span class="coord">N 8 502 500</span><span class="coord">N 8 503 000</span><span class="coord">N 8 503 500</span></div>
+</div>
+</div>
+
+<nav class="dock" aria-label="Contacto rápido">
+  <a class="btn primary" href="https://wa.me/51984208032" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn plain" href="tel:+51984208032">Llamar</a>
+</nav>
+
+<script>
+/* Curvas de nivel: cerros generados como contornos cerrados con ondulación polar */
+(function(){
+  var g=document.getElementById('contours'),NS='http://www.w3.org/2000/svg';
+  var hills=[{x:170,y:170,r:330,n:16,p:.3},{x:880,y:700,r:360,n:17,p:1.7},{x:620,y:60,r:230,n:11,p:2.6},{x:90,y:760,r:220,n:10,p:4.1}];
+  var base=3350;
+  hills.forEach(function(h,hi){
+    for(var k=1;k<=h.n;k++){
+      var R=h.r*(1-(k-1)/h.n),pts=[];
+      for(var i=0;i<96;i++){
+        var t=i/96*Math.PI*2;
+        var w=1+.16*Math.sin(3*t+h.p+k*.12)+.09*Math.sin(5*t+h.p*2-k*.07)+.05*Math.sin(8*t+h.p);
+        pts.push((h.x+Math.cos(t)*R*w).toFixed(1)+','+(h.y+Math.sin(t)*R*w*.82).toFixed(1));
+      }
+      var el=document.createElementNS(NS,'polygon');
+      el.setAttribute('points',pts.join(' '));
+      el.setAttribute('class','contour'+(k%5===1?' index':''));
+      g.appendChild(el);
+      if(k%5===1&&k>1){
+        var tx=document.createElementNS(NS,'text'),a=hi+.6;
+        tx.setAttribute('class','elev');
+        tx.setAttribute('x',(h.x+Math.cos(a)*R*.98).toFixed(0));
+        tx.setAttribute('y',(h.y+Math.sin(a)*R*.8).toFixed(0));
+        tx.textContent=(base+k*25).toLocaleString('es-PE');
+        g.appendChild(tx);
+      }
+    }
+  });
+})();
+/* Copiar al portapapeles */
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),label=b.textContent;
+    function done(){b.textContent='Copiado';setTimeout(function(){b.textContent=label},1600)}
+    function sel(){var v=b.parentNode.querySelector('a');if(!v)return;var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+});
+</script>
+</body>
+</html>

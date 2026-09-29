@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chacón Farfán Andino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+/* Propuesta 2 · Comunidad y territorio: añil y cochinilla, franja de tocapu como separador, imagen panorámica arriba */
+:root{
+  --bg:#f1f2f4; --surface:#ffffff; --ink:#1b1f2e; --muted:#586072; --line:#d7dae2;
+  --indigo:#27347a; --cochineal:#a11d3a; --maize:#d9a521; --on-dark:#f4f5fa;
+  --display:"Alegreya",Georgia,serif;
+  --body:"Alegreya Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12141c; --surface:#1a1d29; --ink:#eceef5; --muted:#a3a9ba; --line:#2d3244;
+  --indigo:#8e9cf0; --cochineal:#f07490; --maize:#e8bc4c; --on-dark:#f4f5fa; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12141c; --surface:#1a1d29; --ink:#eceef5; --muted:#a3a9ba; --line:#2d3244;
+  --indigo:#8e9cf0; --cochineal:#f07490; --maize:#e8bc4c; --on-dark:#f4f5fa; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.12rem;line-height:1.6;margin:0}
+.wrap{max-width:64rem;margin:0 auto;padding-inline:1.25rem}
+a{color:var(--cochineal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--maize);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+.eyebrow{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cochineal);font-weight:700;margin:0}
+/* franja de tocapu: rombos escalonados en tres tintes andinos */
+.tocapu{height:18px;background:
+  linear-gradient(135deg,var(--cochineal) 25%,transparent 25%) 0 0/18px 18px,
+  linear-gradient(225deg,var(--cochineal) 25%,transparent 25%) 0 0/18px 18px,
+  linear-gradient(45deg,#27347a 25%,transparent 25%) 0 0/18px 18px,
+  linear-gradient(315deg,#27347a 25%,#d9a521 25%) 0 0/18px 18px}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-block:1rem}
+.brand{font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--ink);text-decoration:none}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+header.top nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+header.top nav a{color:var(--ink);text-decoration:none;font-weight:500}
+header.top nav a:hover{color:var(--cochineal)}
+.banner{position:relative;margin:0;min-height:22rem;display:flex;align-items:flex-end;
+  background:linear-gradient(180deg,rgba(18,22,48,.15),rgba(18,22,48,.85)),
+             linear-gradient(8deg,#6b5a3a 0 22%,#7c8a5a 22% 40%,#8aa0b8 40% 100%);color:#f4f5fa}
+.banner .wrap{width:100%;padding-block:3rem 2.5rem}
+.banner h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;max-width:44rem;margin-block:.5rem 1rem}
+.banner p{max-width:36rem;margin:0;color:#dfe2ef}
+.banner .eyebrow{color:#f0c85a}
+.phnote{position:absolute;top:1rem;right:1rem;max-width:22rem;background:rgba(10,12,28,.72);color:#e6e8f2;font-size:.78rem;line-height:1.45;padding:.7rem .85rem;border-radius:4px}
+.phnote strong{display:block;color:#f0c85a;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-block;padding:.8rem 1.35rem;border-radius:999px;text-decoration:none;font-weight:700}
+.btn.red{background:#a11d3a;color:#fff}
+.btn.white{background:#fff;color:#27347a}
+.btn.out{border:2px solid var(--indigo);color:var(--indigo)}
+section.s .wrap{padding-block:4rem}
+section.s h2{font-size:2.4rem;font-weight:800;margin-top:.35rem}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.split p{color:var(--muted);max-width:32rem}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.tile .img{aspect-ratio:4/3;max-width:100%;display:flex;align-items:flex-end;padding:.7rem;font-size:.74rem;line-height:1.4;color:#eef0f7}
+.tile .img span{background:rgba(10,12,28,.7);padding:.45rem .55rem;border-radius:3px}
+.t1 .img{background:linear-gradient(10deg,#5a6b3c,#9bb07a 55%,#b7c7dc)}
+.t2 .img{background:linear-gradient(10deg,#6f5b4a,#b9a58f 55%,#d5dbe6)}
+.t3 .img{background:linear-gradient(10deg,#2c3569,#5c6ab0 55%,#c9cfe8)}
+.tile .body{padding:1.1rem 1.1rem 1.3rem;border-top:4px solid var(--maize)}
+.t1 .body{border-top-color:#a11d3a}.t3 .body{border-top-color:#27347a}
+.tile h3{font-size:1.3rem;font-weight:700}
+.visit{background:#27347a;color:#f4f5fa}
+.visit .eyebrow{color:#f0c85a}
+.visit .split p,.visit address{color:#dfe2ef}
+address{font-style:normal;font-size:1.2rem;line-height:1.7;margin-top:1rem}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:1.4rem;display:grid;gap:1rem;min-width:0}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.card small{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#b9bfdc}
+.card .v{font-size:1.15rem;font-variant-numeric:tabular-nums;word-break:break-word;min-width:0}
+.card .v a{color:#fff;text-decoration:none}
+.copy{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:.3rem .8rem;font:inherit;font-size:.85rem;cursor:pointer}
+footer .wrap{padding-block:1.6rem;color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:780px){
+  .split,.tiles{grid-template-columns:1fr}
+  section.s .wrap{padding-block:2.75rem}
+  .phnote{position:static;margin:1rem;max-width:none}
+  .banner{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+
+<div class="tocapu" aria-hidden="true"></div>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#inicio">Asesores Legales JC<small>Juan Carlos Chacón Farfán · Abogado</small></a>
+  <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#casos">Casos</a><a href="#oficina">Oficina y contacto</a></nav>
+</div></header>
+
+<main id="inicio">
+<section class="banner">
+  <div class="phnote"><strong>Imagen Higgsfield · Portada</strong>Paisaje panorámico del Valle Sagrado al amanecer, andenes agrícolas y comuneros a lo lejos, luz dorada, cielo limpio, formato 21:9.</div>
+  <div class="wrap">
+    <p class="eyebrow">Wanchaq · Cusco</p>
+    <h1>Asesoría legal para comunidades, instituciones y familias del Cusco.</h1>
+    <p>Acompañamos a comunidades campesinas, municipalidades y personas naturales y jurídicas en sus asuntos legales.</p>
+    <div class="btns">
+      <a class="btn red" href="https://wa.me/51984208032" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      <a class="btn white" href="#oficina">Visitar la oficina</a>
+    </div>
+  </div>
+</section>
+<div class="tocapu" aria-hidden="true"></div>
+
+<section class="s" id="servicios"><div class="wrap split">
+  <div><p class="eyebrow">Servicios</p><h2>Asesoría legal general</h2></div>
+  <p>Orientación clara en sus consultas, revisión de documentos y acompañamiento en trámites, atendidos directamente por el abogado Juan Carlos Chacón Farfán.</p>
+</div></section>
+
+<section class="s" id="casos" style="padding-top:0"><div class="wrap">
+  <p class="eyebrow">Experiencia</p><h2>Casos de éxito</h2>
+  <div class="tiles">
+    <article class="tile t1"><div class="img"><span>Higgsfield: asamblea comunal al aire libre en los Andes, mantas tejidas, luz natural, 4:3</span></div><div class="body"><h3>Asesoría legal a comunidades campesinas</h3></div></article>
+    <article class="tile t2"><div class="img"><span>Higgsfield: fachada de una municipalidad andina con plaza y balcones coloniales, 4:3</span></div><div class="body"><h3>Asesoría a municipalidades</h3></div></article>
+    <article class="tile t3"><div class="img"><span>Higgsfield: abogado y cliente revisando documentos en un escritorio, primer plano de manos, 4:3</span></div><div class="body"><h3>Asesoría a personas naturales y jurídicas</h3></div></article>
+  </div>
+</div></section>
+
+<section class="s visit" id="oficina"><div class="wrap split">
+  <div>
+    <p class="eyebrow">Oficina</p><h2>Visítenos en Wanchaq</h2>
+    <address>Ofic. 209, 2.º piso<br>Inmueble N.º 1115-C, Av. Tomasa Tito Condemayta<br>Wanchaq, Cusco</address>
+    <div class="btns"><a class="btn white" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Tomasa+Tito+Condemayta+1115-C,+Wanchaq,+Cusco" target="_blank" rel="noopener">Abrir en Google Maps</a></div>
+  </div>
+  <div class="card" id="contacto">
+    <div class="row"><div class="v"><small>Celular / WhatsApp</small><a href="tel:+51984208032">984 208 032</a></div><button class="copy" id="c1" type="button" data-copy="984208032">Copiar</button></div>
+    <div class="row"><div class="v"><small>Correo</small><a href="mailto:asesoreslegalesjc@hotmail.com">asesoreslegalesjc@hotmail.com</a></div><button class="copy" id="c2" type="button" data-copy="asesoreslegalesjc@hotmail.com">Copiar</button></div>
+  </div>
+</div></section>
+</main>
+<div class="tocapu" aria-hidden="true"></div>
+<footer><div class="wrap"><span>Asesores Legales JC · Juan Carlos Chacón Farfán</span><span>Wanchaq, Cusco, Perú</span></div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),label=b.textContent;
+    function done(){b.textContent='Copiado';setTimeout(function(){b.textContent=label},1600)}
+    function sel(){var v=b.parentNode.querySelector('a');if(!v)return;var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+});
+</script>
+</body>
+</html>

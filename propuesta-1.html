@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chacón Farfán Clásico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Mulish:wght@400;600&display=swap">
+<style>
+/* Propuesta 1 · Institucional: piedra inca y bronce. Hero partido texto/retrato, secciones en columnas con filete fino */
+:root{
+  --bg:#f3f1ec; --surface:#fbfaf7; --ink:#1d2320; --muted:#5d645f; --line:#d6d2c7;
+  --forest:#1f3a32; --brass:#8c6a2a; --on-forest:#eef0ea;
+  --display:"Cormorant Garamond",Garamond,Georgia,serif;
+  --body:"Mulish",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141a17; --surface:#1b2320; --ink:#ebeee9; --muted:#a7afa9; --line:#2f3a35;
+  --forest:#0e1a16; --brass:#d2ad62; --on-forest:#eef0ea; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a17; --surface:#1b2320; --ink:#ebeee9; --muted:#a7afa9; --line:#2f3a35;
+  --forest:#0e1a16; --brass:#d2ad62; --on-forest:#eef0ea; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.65;margin:0}
+.wrap{max-width:66rem;margin:0 auto;padding-inline:1.25rem}
+a{color:var(--brass)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;text-wrap:balance;margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:600;margin:0}
+.topbar{background:var(--forest);color:var(--on-forest)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-block:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;color:var(--on-forest);text-decoration:none}
+.logo b{display:grid;place-items:center;width:2.4rem;height:2.4rem;border:1px solid #c9a55c;font-family:var(--display);font-size:1.2rem;color:#e0c07c}
+.logo span{font-family:var(--display);font-size:1.25rem;letter-spacing:.02em}
+.topbar nav{display:flex;gap:1.3rem;flex-wrap:wrap;font-size:.9rem}
+.topbar nav a{color:#c8d1cb;text-decoration:none}
+.topbar nav a:hover{color:#fff}
+.hero{background:var(--forest);color:var(--on-forest)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding-block:3.5rem 4rem}
+.hero .eyebrow{color:#d8b56d}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);margin-block:.7rem 1.1rem;font-weight:600}
+.hero h1 em{font-style:italic;color:#e0c07c}
+.hero p{color:#c8d1cb;max-width:32rem;margin:0}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;text-decoration:none;font-weight:600;font-size:.95rem;border-radius:2px}
+.btn.gold{background:#c9a55c;color:#1a1408}
+.btn.line{border:1px solid rgba(255,255,255,.35);color:var(--on-forest)}
+.ph{position:relative;margin:0;aspect-ratio:4/5;max-width:100%;border:1px solid rgba(201,165,92,.5);
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 38px,transparent 38px 40px),
+             repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 22px,transparent 22px 24px),
+             linear-gradient(160deg,#2e4a41,#172a24);display:flex;align-items:flex-end}
+.ph figcaption{background:rgba(10,18,15,.78);color:#dfe5e0;font-size:.8rem;line-height:1.45;padding:.9rem 1rem;width:100%}
+.ph figcaption strong{display:block;color:#e0c07c;letter-spacing:.12em;text-transform:uppercase;font-size:.68rem;margin-bottom:.25rem}
+section.s .wrap{padding-block:4rem;display:grid;grid-template-columns:16rem 1fr;gap:2.5rem;border-top:1px solid var(--line)}
+section.s h2{font-size:2.3rem;margin-top:.4rem}
+.lead{font-family:var(--display);font-size:1.6rem;line-height:1.35;max-width:36rem;margin:0 0 1rem}
+.muted{color:var(--muted)}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.cases article{padding:1.4rem 1.2rem 1.4rem 0;border-right:1px solid var(--line);min-width:0}
+.cases article + article{padding-left:1.2rem}
+.cases article:last-child{border-right:0}
+.cases .k{font-family:var(--display);font-size:2.4rem;color:var(--brass);line-height:1}
+.cases h3{font-size:1.35rem;margin-top:.6rem}
+.office{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.office .ph{aspect-ratio:3/2}
+address{font-style:normal;font-size:1.15rem;line-height:1.75}
+.contact{background:var(--surface);border:1px solid var(--line);padding:1.5rem;display:grid;gap:1rem;max-width:34rem}
+.contact .row{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+.contact small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.contact .v{font-variant-numeric:tabular-nums;font-size:1.1rem;word-break:break-word;min-width:0}
+.contact .v a{color:var(--ink);text-decoration:none}
+.copy{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.82rem;padding:.3rem .7rem;cursor:pointer;border-radius:2px}
+footer{background:var(--forest);color:#c8d1cb;font-size:.88rem}
+footer .wrap{padding-block:1.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:780px){
+  .hero .wrap,.office{grid-template-columns:1fr}
+  .hero .wrap{padding-block:2.5rem}
+  section.s .wrap{grid-template-columns:1fr;gap:1rem;padding-block:2.75rem}
+  .cases{grid-template-columns:1fr}
+  .cases article,.cases article + article{border-right:0;border-bottom:1px solid var(--line);padding:1.2rem 0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <a class="logo" href="#inicio"><b>JC</b><span>Asesores Legales JC</span></a>
+  <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#casos">Casos de éxito</a><a href="#oficina">Oficina</a><a href="#contacto">Contacto</a></nav>
+</div></div>
+
+<main id="inicio">
+<section class="hero"><div class="wrap">
+  <div>
+    <p class="eyebrow">Estudio jurídico en Cusco</p>
+    <h1>Juan Carlos <em>Chacón Farfán</em></h1>
+    <p>Abogado. Asesoría legal a personas naturales y jurídicas, municipalidades y comunidades campesinas, desde nuestra oficina en Wanchaq.</p>
+    <div class="btns">
+      <a class="btn gold" href="https://wa.me/51984208032" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <a class="btn line" href="#contacto">Datos de contacto</a>
+    </div>
+  </div>
+  <figure class="ph" aria-label="Espacio para retrato del abogado">
+    <figcaption><strong>Imagen Higgsfield · Retrato</strong>Retrato editorial de un abogado peruano de traje oscuro, de pie junto a un muro de piedra inca en Cusco, luz cálida de tarde, fondo desenfocado, formato vertical 4:5.</figcaption>
+  </figure>
+</div></section>
+
+<section class="s" id="servicios"><div class="wrap">
+  <div><p class="eyebrow">Servicios</p><h2>Asesoría legal general</h2></div>
+  <div>
+    <p class="lead">Orientación jurídica directa, con el abogado a cargo de cada consulta.</p>
+    <p class="muted">Revisión de documentos, consultas y acompañamiento en trámites para personas, empresas e instituciones.</p>
+  </div>
+</div></section>
+
+<section class="s" id="casos"><div class="wrap">
+  <div><p class="eyebrow">Experiencia</p><h2>Casos de éxito</h2></div>
+  <div class="cases">
+    <article><div class="k">I</div><h3>Asesoría legal a comunidades campesinas</h3></article>
+    <article><div class="k">II</div><h3>Asesoría a municipalidades</h3></article>
+    <article><div class="k">III</div><h3>Asesoría a personas naturales y jurídicas</h3></article>
+  </div>
+</div></section>
+
+<section class="s" id="oficina"><div class="wrap">
+  <div><p class="eyebrow">Oficina</p><h2>Wanchaq, Cusco</h2></div>
+  <div class="office">
+    <div>
+      <address>Ofic. 209, 2.º piso<br>Inmueble N.º 1115-C<br>Av. Tomasa Tito Condemayta<br><span class="muted">Wanchaq, Cusco, Perú</span></address>
+      <div class="btns"><a class="btn gold" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Tomasa+Tito+Condemayta+1115-C,+Wanchaq,+Cusco" target="_blank" rel="noopener">Cómo llegar</a></div>
+    </div>
+    <figure class="ph" aria-label="Espacio para imagen de la oficina">
+      <figcaption><strong>Imagen Higgsfield · Oficina</strong>Interior de un despacho jurídico sobrio, escritorio de madera, estantería con códigos legales, ventana con vista a los cerros de Cusco, luz natural, formato 3:2.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="s" id="contacto"><div class="wrap">
+  <div><p class="eyebrow">Contacto</p><h2>Agende su consulta</h2></div>
+  <div class="contact">
+    <div class="row"><div class="v"><small>Celular / WhatsApp</small><a href="tel:+51984208032">984 208 032</a></div><button class="copy" id="c1" type="button" data-copy="984208032">Copiar</button></div>
+    <div class="row"><div class="v"><small>Correo</small><a href="mailto:asesoreslegalesjc@hotmail.com">asesoreslegalesjc@hotmail.com</a></div><button class="copy" id="c2" type="button" data-copy="asesoreslegalesjc@hotmail.com">Copiar</button></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Asesores Legales JC · Juan Carlos Chacón Farfán</span><span>Wanchaq, Cusco</span></div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),label=b.textContent;
+    function done(){b.textContent='Copiado';setTimeout(function(){b.textContent=label},1600)}
+    function sel(){var v=b.parentNode.querySelector('a');if(!v)return;var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+});
+</script>
+</body>
+</html>
